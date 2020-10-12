@@ -14,8 +14,8 @@ namespace FlashCards
 
         public static void  StartClient(Vista vista)
         {
-            string user = "roberto_guiral";
-            string pass = "user_password";
+            //string user = "roberto_guiral";
+            //string pass = "user_password";
 
             //String servidor = "127.0.0.1";
             String servidor = "jlzorita.ddns.net/";

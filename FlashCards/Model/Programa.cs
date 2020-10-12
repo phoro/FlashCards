@@ -16,7 +16,7 @@ namespace FlashCards
         {
             // TODO
             // Crea un controlador
-          // Controlador control = new Controlador();
+            // Controlador control = new Controlador();
 
 
             // Crea la vista
@@ -24,13 +24,13 @@ namespace FlashCards
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Vista());
 
-            
+
 
             //TODO demanar login
 
             //TODO
-           // Inicia el socket
-           // control.connecta
+            // Inicia el socket
+            // control.connecta
 
 
             //Prova webservice

@@ -33,10 +33,32 @@ namespace FlashCards
             //Connexio.StartClient(vista);
             //vista.Setlabeltext();
 
-            //Connexio webservice
-            ConnexioWeb.connecta();
+            //Connexio webservice i desa la resposta
+            String resposta = ConnexioWeb.connecta(vista);
+            AnalitzaResposta(resposta);
             
             
+        }
+
+        public void AnalitzaResposta(string resposta)
+        {
+            if (resposta.Equals("Missatge rebut: Hola Server :)"))
+            {
+                //modo admin
+                vista.AdminMode(true);
+
+            } else
+            {
+                //mode usuari
+            }
+
+        }
+
+        // Desa momentaniament usuari i pass
+        public void UserPass(string user, string pass)
+        {
+            String usuari = user;
+            String password = pass;
         }
 
         public void Login()

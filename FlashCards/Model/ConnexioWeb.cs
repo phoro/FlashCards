@@ -13,16 +13,17 @@ namespace FlashCards.Model
     class ConnexioWeb
     {
 
-        public static void connecta()
+        //Connecta al webservice i torna un missatge
+        public static string connecta(Vista vista)
         {
             WebService_flashcats enlinia = new WebService_flashcats();
 
 
             String resposta = enlinia.responMissatge("Hola Server :)");
             
-            Console.WriteLine("******************************************");
             Console.WriteLine(resposta);
-            
+            vista.SetlabelInfo(resposta);
+            return (resposta);
         }
     }
 
