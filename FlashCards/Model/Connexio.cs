@@ -12,22 +12,26 @@ namespace FlashCards
     {
         
 
-        public static void StartClient()
+        public static void  StartClient(Vista vista)
         {
             string user = "roberto_guiral";
             string pass = "user_password";
 
             //String servidor = "127.0.0.1";
-            String servidor = "http://jlzorita.ddns.net/phpmyadmin/";
+            String servidor = "jlzorita.ddns.net/";
 
 
             try
             {
+                vista.SetlabelInfo("connectant");
                 // missatge per enviar
-                String missatge = "peticio del client";
+                //probar login mysql
+                String missatge = "Hola server :)";
+                
 
                 //Crea un client TCP
-                int port = 8118;
+                int port = 6066;
+                //int port = 3306;
                 TcpClient client = new TcpClient(servidor, port);
 
                 // Enmmagatzema el missatge en un array de byte
@@ -39,8 +43,9 @@ namespace FlashCards
 
                 // Envia missatge
                 stream.Write(buffer, 0, buffer.Length);
-                Console.WriteLine("Enviat: {0}", missatge);
-
+                //Console.WriteLine("Enviat: {0}", missatge);
+                vista.SetlabelInfo(missatge);
+                
                 // Resposta del servidor.
 
                 // Reinicializem el buffer per desar la resposta.
@@ -56,11 +61,14 @@ namespace FlashCards
 
                 // resposta byte[] --> string
                 resposta = System.Text.Encoding.ASCII.GetString(buffer, 0, bytes);
-                Console.WriteLine("Received: {0}", resposta);
+                //Console.WriteLine("Received: {0}", resposta);
+                vista.SetlabelInfo(resposta);
 
                 // Tancar
                 stream.Close();
                 client.Close();
+
+                
 
             }
                 catch (ArgumentNullException ane)
@@ -75,6 +83,7 @@ namespace FlashCards
                 {
                     Console.WriteLine("Unexpected exception : {0}", e.ToString());
                 }
+            
 
             
                 

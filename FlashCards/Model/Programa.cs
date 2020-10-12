@@ -31,6 +31,10 @@ namespace FlashCards
             //TODO
            // Inicia el socket
            // control.connecta
+
+
+            //Prova webservice
+
         }
     }
 }

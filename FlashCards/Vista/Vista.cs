@@ -43,5 +43,10 @@ namespace FlashCards
             
             label1.Text = "controlador funcional";
         }
+        public void SetlabelInfo(String text)
+        {
+
+            labelinfo.Text = text;
+        }
     }
 }

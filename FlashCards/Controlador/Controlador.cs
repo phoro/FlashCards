@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FlashCards.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,10 +28,13 @@ namespace FlashCards
             //TO DO
             // Inici socket client
             // Connexio.
-            Connexio.StartClient();
 
+            // connexió socket
+            //Connexio.StartClient(vista);
+            //vista.Setlabeltext();
 
-            vista.Setlabeltext();
+            //Connexio webservice
+            ConnexioWeb.connecta();
             
             
         }
