@@ -29,7 +29,11 @@ namespace FlashCards.net.ddns.jlzorita {
     [System.Web.Services.WebServiceBindingAttribute(Name="WebService_flashcatsPortBinding", Namespace="http://webservice_package/")]
     public partial class WebService_flashcats : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
+        private System.Threading.SendOrPostCallback logoutOperationCompleted;
+        
         private System.Threading.SendOrPostCallback responMissatgeOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback loginOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -70,7 +74,43 @@ namespace FlashCards.net.ddns.jlzorita {
         }
         
         /// <remarks/>
+        public event logoutCompletedEventHandler logoutCompleted;
+        
+        /// <remarks/>
         public event responMissatgeCompletedEventHandler responMissatgeCompleted;
+        
+        /// <remarks/>
+        public event loginCompletedEventHandler loginCompleted;
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("", RequestNamespace="http://webservice_package/", ResponseNamespace="http://webservice_package/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public bool logout([System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)] string codi) {
+            object[] results = this.Invoke("logout", new object[] {
+                        codi});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void logoutAsync(string codi) {
+            this.logoutAsync(codi, null);
+        }
+        
+        /// <remarks/>
+        public void logoutAsync(string codi, object userState) {
+            if ((this.logoutOperationCompleted == null)) {
+                this.logoutOperationCompleted = new System.Threading.SendOrPostCallback(this.OnlogoutOperationCompleted);
+            }
+            this.InvokeAsync("logout", new object[] {
+                        codi}, this.logoutOperationCompleted, userState);
+        }
+        
+        private void OnlogoutOperationCompleted(object arg) {
+            if ((this.logoutCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.logoutCompleted(this, new logoutCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("", RequestNamespace="http://webservice_package/", ResponseNamespace="http://webservice_package/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -103,6 +143,38 @@ namespace FlashCards.net.ddns.jlzorita {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("", RequestNamespace="http://webservice_package/", ResponseNamespace="http://webservice_package/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
+        public string[] login([System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)] string usuari, [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)] string pass) {
+            object[] results = this.Invoke("login", new object[] {
+                        usuari,
+                        pass});
+            return ((string[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void loginAsync(string usuari, string pass) {
+            this.loginAsync(usuari, pass, null);
+        }
+        
+        /// <remarks/>
+        public void loginAsync(string usuari, string pass, object userState) {
+            if ((this.loginOperationCompleted == null)) {
+                this.loginOperationCompleted = new System.Threading.SendOrPostCallback(this.OnloginOperationCompleted);
+            }
+            this.InvokeAsync("login", new object[] {
+                        usuari,
+                        pass}, this.loginOperationCompleted, userState);
+        }
+        
+        private void OnloginOperationCompleted(object arg) {
+            if ((this.loginCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.loginCompleted(this, new loginCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -118,6 +190,32 @@ namespace FlashCards.net.ddns.jlzorita {
                 return true;
             }
             return false;
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void logoutCompletedEventHandler(object sender, logoutCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class logoutCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal logoutCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
         }
     }
     
@@ -143,6 +241,32 @@ namespace FlashCards.net.ddns.jlzorita {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void loginCompletedEventHandler(object sender, loginCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class loginCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal loginCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string[])(this.results[0]));
             }
         }
     }

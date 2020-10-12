@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>FlashCats.ico</ApplicationIcon>
+    <ApplicationIcon>Assets\FlashCats.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -120,7 +120,12 @@
     </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="FlashCats.ico" />
+    <Content Include="Assets\FlashCats.ico" />
+    <Content Include="Assets\presentacio_ROB2702.jpg" />
+    <Content Include="Assets\ROB2702.jpg" />
+    <Content Include="Assets\x1.png" />
+    <Content Include="Assets\x2.png" />
+    <Content Include="Assets\x2w.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
