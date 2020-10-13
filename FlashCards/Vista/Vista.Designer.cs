@@ -357,9 +357,13 @@
             // 
             // btConnecta
             // 
+            this.btConnecta.FlatAppearance.BorderSize = 0;
+            this.btConnecta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btConnecta.Font = new System.Drawing.Font("Verdana", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btConnecta.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btConnecta.Location = new System.Drawing.Point(45, 201);
             this.btConnecta.Name = "btConnecta";
-            this.btConnecta.Size = new System.Drawing.Size(75, 23);
+            this.btConnecta.Size = new System.Drawing.Size(252, 48);
             this.btConnecta.TabIndex = 2;
             this.btConnecta.Text = "connecta";
             this.btConnecta.UseVisualStyleBackColor = true;
@@ -367,22 +371,28 @@
             // 
             // textboxPass
             // 
+            this.textboxPass.BackColor = System.Drawing.Color.DarkGray;
             this.textboxPass.Font = new System.Drawing.Font("Miriam Mono CLM", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.textboxPass.Location = new System.Drawing.Point(45, 125);
             this.textboxPass.Name = "textboxPass";
+            this.textboxPass.PasswordChar = '*';
             this.textboxPass.Size = new System.Drawing.Size(252, 46);
             this.textboxPass.TabIndex = 1;
             this.textboxPass.Text = "Password";
+            this.textboxPass.Enter += new System.EventHandler(this.textboxPass_Enter);
+            this.textboxPass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textboxPass_KeyPress);
             // 
             // textboxUser
             // 
-            this.textboxUser.BackColor = System.Drawing.SystemColors.Control;
+            this.textboxUser.BackColor = System.Drawing.Color.DarkGray;
             this.textboxUser.Font = new System.Drawing.Font("Miriam Mono CLM", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.textboxUser.Location = new System.Drawing.Point(45, 36);
             this.textboxUser.Name = "textboxUser";
             this.textboxUser.Size = new System.Drawing.Size(252, 46);
             this.textboxUser.TabIndex = 0;
             this.textboxUser.Text = "usuari";
+            this.textboxUser.Enter += new System.EventHandler(this.textboxUser_Enter);
+            this.textboxUser.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textboxPass_KeyPress);
             // 
             // Vista
             // 

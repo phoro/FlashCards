@@ -36,10 +36,10 @@ namespace FlashCards
         public Vista()
         {
             InitializeComponent();
-            
+
             // Crida a la funció per crear un controlador
             CreaControlador();
-           
+
         }
 
         private void btConnecta_Click(object sender, EventArgs e)
@@ -47,7 +47,7 @@ namespace FlashCards
             //con.Connecta();
             //con.UserPass(textboxUser.Text, textboxPass.Text);
 
-            
+
             string pass = "";
             string user = "";
 
@@ -55,7 +55,7 @@ namespace FlashCards
             user = textboxUser.Text;
             pass = textboxPass.Text;
 
-            
+
             //con.Login("demo", "demo");
             con.Login(user, pass);
 
@@ -69,14 +69,34 @@ namespace FlashCards
 
         }
 
+        //Accepta polsar tecla 'intro' per connectar
+        private void textboxPass_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((int)e.KeyChar == (int)Keys.Enter)
+            {
+                // TODO
+                btConnecta.PerformClick();
+            }
+
+        }
+
+
+
+
+
+        
+
+
+
+
         //Posa la imatge principal
-        public void SetPicturePrincipal (Image imatge)
+        public void SetPicturePrincipal(Image imatge)
         {
             pictureboxprincipal.Image = imatge;
             pictureboxprincipal.Visible = true;
             //pictureboxprincipal.BringToFront();
         }
-        
+
 
         // Estableix el valor de l'etiqueta
         public void SetlabelInfo(String text)
@@ -87,7 +107,7 @@ namespace FlashCards
 
         // Activa el mode admin
         // o el mode usuari
-        public void AdminMode (Boolean admin)
+        public void AdminMode(Boolean admin)
         {
             // amaga login ui
             btConnecta.Visible = false;
@@ -97,7 +117,7 @@ namespace FlashCards
 
             if (admin)
             {
-                buttonAdminOn.Visible=true;
+                buttonAdminOn.Visible = true;
                 panel2.Visible = true;
                 buttonadmin1.Visible = true;
                 buttonadmin2.Visible = true;
@@ -105,7 +125,8 @@ namespace FlashCards
                 panelbuttonadmin2.Visible = true;
                 buttonAdminOff.Visible = false;
                 panelbuttonAdminOff.Visible = false;
-            } else
+            }
+            else
             {
                 buttonAdminOn.Visible = false;
                 panel2.Visible = false;
@@ -127,7 +148,7 @@ namespace FlashCards
         }
 
         // Tanca l'aplicació i fa logout
-    
+
         private void buttontancar_Click(object sender, EventArgs e)
         {
             con.Logout();
@@ -151,7 +172,19 @@ namespace FlashCards
         private void buttonAdminOff_Click(object sender, EventArgs e)
         {
             AdminMode(true);
-            
+
+        }
+
+        //Selecciona tot el text quan s'entra al textbox
+        private void textboxPass_Enter(object sender, EventArgs e)
+        {
+            textboxPass.SelectAll();
+        }
+
+        //Selecciona tot el text quan s'entra al textbox
+        private void textboxUser_Enter(object sender, EventArgs e)
+        {
+            textboxUser.SelectAll();
         }
     }
 }
