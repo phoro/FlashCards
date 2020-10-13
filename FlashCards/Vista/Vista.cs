@@ -13,9 +13,11 @@ namespace FlashCards
     public partial class Vista : Form
     {
         // *****************************************
-        // Codi copiat https://stackoverrun.com/es/q/309672
+        // Aquestes línies de codi s'han copiat de:
+        // https://stackoverrun.com/es/q/309672
+        // *****************************************
         // Permet moure la finestra sense necessitat de tenir barra de títol
-        // Amb la funcio Vista_MouseDown
+        // amb la funcio Vista_MouseDown
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
 
@@ -34,9 +36,7 @@ namespace FlashCards
         public Vista()
         {
             InitializeComponent();
-            //label1.Text = "hola";
-            //Setlabeltext();
-
+            
             // Crida a la funció per crear un controlador
             CreaControlador();
            
@@ -46,9 +46,18 @@ namespace FlashCards
         {
             //con.Connecta();
             //con.UserPass(textboxUser.Text, textboxPass.Text);
+
+            
+            string pass = "";
+            string user = "";
+
+            // captura text
+            user = textboxUser.Text;
+            pass = textboxPass.Text;
+
             
             //con.Login("demo", "demo");
-            con.Login("root", "root");
+            con.Login(user, pass);
 
         }
 
@@ -107,7 +116,7 @@ namespace FlashCards
             }
         }
 
-        // Permet moure la finestra sense barra de títol
+        // Permet moure la finestra sense necessitat de tenir barra de títol
         private void Vista_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -117,7 +126,8 @@ namespace FlashCards
             }
         }
 
-        // Tanca l'aplicació
+        // Tanca l'aplicació i fa logout
+    
         private void buttontancar_Click(object sender, EventArgs e)
         {
             con.Logout();

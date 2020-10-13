@@ -23,16 +23,16 @@ namespace FlashCards
         //private Connexio con;
         private Vista vista;
 
-        
+
         // Constructor. Requereix un objecte Vista on actuar
-                
+
         public Controlador(Vista vista)
         {
             this.vista = vista;
-            
+
 
         }
-        
+        // Mètode provisional fase prova
         public void Connecta()
         {
             //TO DO
@@ -46,20 +46,20 @@ namespace FlashCards
             //Connexio webservice i desa la resposta
             String resposta = ConnexioWeb.connecta(vista);
             //AnalitzaResposta(resposta);
-            
-            
+
+
         }
 
         //Anàlisi de la resposta del servidor
         public void AnalitzaResposta(string primera, string segona)
         {
             vista.SetlabelInfo("analitzant resposta" + " primera: " + primera + " segona: " + segona);
-            
-            if ((primera == "0")&&(segona =="0")){
+
+            if ((primera == "0") && (segona == "0"))
+            {
                 // Usuari no reconegut
                 // TODO torna a introduir login pass
                 vista.SetlabelInfo("usuari no reconegut");
-
 
             }
             else if ((primera != "0") && (segona == "1"))
@@ -71,7 +71,7 @@ namespace FlashCards
                 vista.AdminMode(true);
                 PosaImatge(imatge);
                 vista.SetlabelInfo("administrador");
-            } 
+            }
             else if ((primera != "0") && (segona == "0"))
             {
                 codi = primera;
@@ -94,12 +94,7 @@ namespace FlashCards
             vista.SetPicturePrincipal(imatge);
         }
 
-        // Desa momentaniament usuari i pass
-        public void UserPass(string user, string pass)
-        {
-            String usuari = user;
-            String password = pass;
-        }
+
 
         public void Login(string user, string pass)
         {
@@ -109,11 +104,11 @@ namespace FlashCards
             AnalitzaResposta(resposta[0], resposta[1]);
         }
 
-        public  void Logout()
+        public void Logout()
         {
             ConnexioWeb.logout(codi);
-            
+
         }
     }
-       
+
 }

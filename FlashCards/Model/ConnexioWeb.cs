@@ -16,6 +16,7 @@ namespace FlashCards.Model
         private string codi = "";
 
         //Connecta al webservice i torna un missatge
+        // funció només per fase de proves
         public static string connecta(Vista vista)
         {
             WebService_flashcats enlinia = new WebService_flashcats();
@@ -28,6 +29,7 @@ namespace FlashCards.Model
             return (resposta);
         }
 
+        // fa login
         public static string[] login(string user, string pass)
         {
             WebService_flashcats enlinia = new WebService_flashcats();
@@ -39,6 +41,7 @@ namespace FlashCards.Model
             return (resposta);
         }
 
+        // fa logout
         public static void logout(string codi)
         {
             WebService_flashcats enlinia = new WebService_flashcats();
@@ -50,6 +53,7 @@ namespace FlashCards.Model
             
         }
 
+        //***** getters && setters *******
         public void setcodi (string codi)
         {
             this.codi = codi;
