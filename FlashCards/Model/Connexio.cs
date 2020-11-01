@@ -1,18 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Text;
 using System.Net.Sockets;
 
 namespace FlashCards
 
 {
-    //Socket client sincrònic
+
+    /// <summary>
+    /// <para>Socket client sincrònic</para> 
+    /// <para> AQUESTA CLASSE NO ES FA SERVIR ACTUALMENT EN AQUEST PROJECTE</para>
+    /// <para> Connexió alternativa</para>
+    /// </summary>
     public static class Connexio
     {
-        
-
-        public static void  StartClient(Vista vista)
+        public static void StartClient(Vista vista)
         {
             //string user = "roberto_guiral";
             //string pass = "user_password";
@@ -27,7 +27,7 @@ namespace FlashCards
                 // missatge per enviar
                 //probar login mysql
                 String missatge = "Hola server :)";
-                
+
 
                 //Crea un client TCP
                 int port = 6066;
@@ -45,7 +45,7 @@ namespace FlashCards
                 stream.Write(buffer, 0, buffer.Length);
                 //Console.WriteLine("Enviat: {0}", missatge);
                 vista.SetlabelInfo(missatge);
-                
+
                 // Resposta del servidor.
 
                 // Reinicializem el buffer per desar la resposta.
@@ -68,26 +68,26 @@ namespace FlashCards
                 stream.Close();
                 client.Close();
 
-                
+
 
             }
-                catch (ArgumentNullException ane)
-                {
-                    Console.WriteLine("ArgumentNullException : {0}", ane.ToString());
-                }
-                catch (SocketException se)
-                {
-                    Console.WriteLine("SocketException : {0}", se.ToString());
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine("Unexpected exception : {0}", e.ToString());
-                }
-            
+            catch (ArgumentNullException ane)
+            {
+                Console.WriteLine("ArgumentNullException : {0}", ane.ToString());
+            }
+            catch (SocketException se)
+            {
+                Console.WriteLine("SocketException : {0}", se.ToString());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Unexpected exception : {0}", e.ToString());
+            }
 
-            
-                
-            
+
+
+
+
         }
 
     }

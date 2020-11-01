@@ -29,11 +29,19 @@ namespace FlashCards.net.ddns.jlzorita {
     [System.Web.Services.WebServiceBindingAttribute(Name="WebService_flashcatsPortBinding", Namespace="http://webservice_package/")]
     public partial class WebService_flashcats : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
+        private System.Threading.SendOrPostCallback altaTemaOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback numeroFilesOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback llistarTemesOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback baixaFitxerOperationCompleted;
+        
         private System.Threading.SendOrPostCallback logoutOperationCompleted;
         
-        private System.Threading.SendOrPostCallback responMissatgeOperationCompleted;
-        
         private System.Threading.SendOrPostCallback loginOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback pujaFitxerOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -74,13 +82,153 @@ namespace FlashCards.net.ddns.jlzorita {
         }
         
         /// <remarks/>
+        public event altaTemaCompletedEventHandler altaTemaCompleted;
+        
+        /// <remarks/>
+        public event numeroFilesCompletedEventHandler numeroFilesCompleted;
+        
+        /// <remarks/>
+        public event llistarTemesCompletedEventHandler llistarTemesCompleted;
+        
+        /// <remarks/>
+        public event baixaFitxerCompletedEventHandler baixaFitxerCompleted;
+        
+        /// <remarks/>
         public event logoutCompletedEventHandler logoutCompleted;
         
         /// <remarks/>
-        public event responMissatgeCompletedEventHandler responMissatgeCompleted;
+        public event loginCompletedEventHandler loginCompleted;
         
         /// <remarks/>
-        public event loginCompletedEventHandler loginCompleted;
+        public event pujaFitxerCompletedEventHandler pujaFitxerCompleted;
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("", RequestNamespace="http://webservice_package/", ResponseNamespace="http://webservice_package/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int altaTema([System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)] string codi_sessio, [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)] string nom_tema, [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)] string descripcio) {
+            object[] results = this.Invoke("altaTema", new object[] {
+                        codi_sessio,
+                        nom_tema,
+                        descripcio});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void altaTemaAsync(string codi_sessio, string nom_tema, string descripcio) {
+            this.altaTemaAsync(codi_sessio, nom_tema, descripcio, null);
+        }
+        
+        /// <remarks/>
+        public void altaTemaAsync(string codi_sessio, string nom_tema, string descripcio, object userState) {
+            if ((this.altaTemaOperationCompleted == null)) {
+                this.altaTemaOperationCompleted = new System.Threading.SendOrPostCallback(this.OnaltaTemaOperationCompleted);
+            }
+            this.InvokeAsync("altaTema", new object[] {
+                        codi_sessio,
+                        nom_tema,
+                        descripcio}, this.altaTemaOperationCompleted, userState);
+        }
+        
+        private void OnaltaTemaOperationCompleted(object arg) {
+            if ((this.altaTemaCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.altaTemaCompleted(this, new altaTemaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("", RequestNamespace="http://webservice_package/", ResponseNamespace="http://webservice_package/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int numeroFiles([System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)] string codi_sessio, [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)] string taula) {
+            object[] results = this.Invoke("numeroFiles", new object[] {
+                        codi_sessio,
+                        taula});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void numeroFilesAsync(string codi_sessio, string taula) {
+            this.numeroFilesAsync(codi_sessio, taula, null);
+        }
+        
+        /// <remarks/>
+        public void numeroFilesAsync(string codi_sessio, string taula, object userState) {
+            if ((this.numeroFilesOperationCompleted == null)) {
+                this.numeroFilesOperationCompleted = new System.Threading.SendOrPostCallback(this.OnnumeroFilesOperationCompleted);
+            }
+            this.InvokeAsync("numeroFiles", new object[] {
+                        codi_sessio,
+                        taula}, this.numeroFilesOperationCompleted, userState);
+        }
+        
+        private void OnnumeroFilesOperationCompleted(object arg) {
+            if ((this.numeroFilesCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.numeroFilesCompleted(this, new numeroFilesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("", RequestNamespace="http://webservice_package/", ResponseNamespace="http://webservice_package/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
+        public stringArray[] llistarTemes([System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)] string codi_sessio, [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)] int num_pagina, [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)] int num_files) {
+            object[] results = this.Invoke("llistarTemes", new object[] {
+                        codi_sessio,
+                        num_pagina,
+                        num_files});
+            return ((stringArray[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void llistarTemesAsync(string codi_sessio, int num_pagina, int num_files) {
+            this.llistarTemesAsync(codi_sessio, num_pagina, num_files, null);
+        }
+        
+        /// <remarks/>
+        public void llistarTemesAsync(string codi_sessio, int num_pagina, int num_files, object userState) {
+            if ((this.llistarTemesOperationCompleted == null)) {
+                this.llistarTemesOperationCompleted = new System.Threading.SendOrPostCallback(this.OnllistarTemesOperationCompleted);
+            }
+            this.InvokeAsync("llistarTemes", new object[] {
+                        codi_sessio,
+                        num_pagina,
+                        num_files}, this.llistarTemesOperationCompleted, userState);
+        }
+        
+        private void OnllistarTemesOperationCompleted(object arg) {
+            if ((this.llistarTemesCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.llistarTemesCompleted(this, new llistarTemesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("", RequestNamespace="http://webservice_package/", ResponseNamespace="http://webservice_package/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="base64Binary", IsNullable=true)]
+        public byte[] baixaFitxer() {
+            object[] results = this.Invoke("baixaFitxer", new object[0]);
+            return ((byte[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void baixaFitxerAsync() {
+            this.baixaFitxerAsync(null);
+        }
+        
+        /// <remarks/>
+        public void baixaFitxerAsync(object userState) {
+            if ((this.baixaFitxerOperationCompleted == null)) {
+                this.baixaFitxerOperationCompleted = new System.Threading.SendOrPostCallback(this.OnbaixaFitxerOperationCompleted);
+            }
+            this.InvokeAsync("baixaFitxer", new object[0], this.baixaFitxerOperationCompleted, userState);
+        }
+        
+        private void OnbaixaFitxerOperationCompleted(object arg) {
+            if ((this.baixaFitxerCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.baixaFitxerCompleted(this, new baixaFitxerCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("", RequestNamespace="http://webservice_package/", ResponseNamespace="http://webservice_package/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -109,36 +257,6 @@ namespace FlashCards.net.ddns.jlzorita {
             if ((this.logoutCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.logoutCompleted(this, new logoutCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("", RequestNamespace="http://webservice_package/", ResponseNamespace="http://webservice_package/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string responMissatge([System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)] string @this) {
-            object[] results = this.Invoke("responMissatge", new object[] {
-                        @this});
-            return ((string)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void responMissatgeAsync(string @this) {
-            this.responMissatgeAsync(@this, null);
-        }
-        
-        /// <remarks/>
-        public void responMissatgeAsync(string @this, object userState) {
-            if ((this.responMissatgeOperationCompleted == null)) {
-                this.responMissatgeOperationCompleted = new System.Threading.SendOrPostCallback(this.OnresponMissatgeOperationCompleted);
-            }
-            this.InvokeAsync("responMissatge", new object[] {
-                        @this}, this.responMissatgeOperationCompleted, userState);
-        }
-        
-        private void OnresponMissatgeOperationCompleted(object arg) {
-            if ((this.responMissatgeCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.responMissatgeCompleted(this, new responMissatgeCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -175,6 +293,36 @@ namespace FlashCards.net.ddns.jlzorita {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("", RequestNamespace="http://webservice_package/", ResponseNamespace="http://webservice_package/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void pujaFitxer([System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="base64Binary", IsNullable=true)] byte[] fitxer, [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)] string extensio) {
+            this.Invoke("pujaFitxer", new object[] {
+                        fitxer,
+                        extensio});
+        }
+        
+        /// <remarks/>
+        public void pujaFitxerAsync(byte[] fitxer, string extensio) {
+            this.pujaFitxerAsync(fitxer, extensio, null);
+        }
+        
+        /// <remarks/>
+        public void pujaFitxerAsync(byte[] fitxer, string extensio, object userState) {
+            if ((this.pujaFitxerOperationCompleted == null)) {
+                this.pujaFitxerOperationCompleted = new System.Threading.SendOrPostCallback(this.OnpujaFitxerOperationCompleted);
+            }
+            this.InvokeAsync("pujaFitxer", new object[] {
+                        fitxer,
+                        extensio}, this.pujaFitxerOperationCompleted, userState);
+        }
+        
+        private void OnpujaFitxerOperationCompleted(object arg) {
+            if ((this.pujaFitxerCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.pujaFitxerCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -190,6 +338,132 @@ namespace FlashCards.net.ddns.jlzorita {
                 return true;
             }
             return false;
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://jaxb.dev.java.net/array")]
+    public partial class stringArray {
+        
+        private string[] itemField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("item", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
+        public string[] item {
+            get {
+                return this.itemField;
+            }
+            set {
+                this.itemField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void altaTemaCompletedEventHandler(object sender, altaTemaCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class altaTemaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal altaTemaCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void numeroFilesCompletedEventHandler(object sender, numeroFilesCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class numeroFilesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal numeroFilesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void llistarTemesCompletedEventHandler(object sender, llistarTemesCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class llistarTemesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal llistarTemesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public stringArray[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((stringArray[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void baixaFitxerCompletedEventHandler(object sender, baixaFitxerCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class baixaFitxerCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal baixaFitxerCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public byte[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((byte[])(this.results[0]));
+            }
         }
     }
     
@@ -221,32 +495,6 @@ namespace FlashCards.net.ddns.jlzorita {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
-    public delegate void responMissatgeCompletedEventHandler(object sender, responMissatgeCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class responMissatgeCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal responMissatgeCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public string Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void loginCompletedEventHandler(object sender, loginCompletedEventArgs e);
     
     /// <remarks/>
@@ -270,6 +518,10 @@ namespace FlashCards.net.ddns.jlzorita {
             }
         }
     }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void pujaFitxerCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
 }
 
 #pragma warning restore 1591

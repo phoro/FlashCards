@@ -1,64 +1,70 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Runtime.Remoting.Channels;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Services;
-using FlashCards.net.ddns.jlzorita;
+﻿using FlashCards.net.ddns.jlzorita;
+using System;
+
+
+/*
+ * 
+ * **** info resposta servidor *****
+ * 
+ * comunicació servidor:
+ * login (user, pass)
+ * 0 0 -> no reconegut
+ * clau i 0 o 1 (usuari normal o admin)
+ * clau i -1 (sessió ja iniciada, retorna clau en memòria)
+ * la clau única té el primer número 0 si és user i 1 si és admin
+ * 
+ *  
+ * logout(clau) -> esborra la clau del hashmap d'usuaris
+ * 
+ *   
+ * */
 
 
 namespace FlashCards.Model
 {
-    class ConnexioWeb
+
+    /// <summary>
+    /// Aquesta classe és l'encarregada de connectar-se amb el servidor.
+    /// @Robert Guiral
+    /// </summary>
+    public class ConnexioWeb
     {
-        private string codi = "";
+        /// <value> Per desar el codi de connexió actual</value>
+        private String codi = "";
 
-        //Connecta al webservice i torna un missatge
-        // funció només per fase de proves
-        public static string connecta(Vista vista)
+
+        /// <summary>
+        /// Fa login al servidor
+        /// </summary>
+        /// <param name="user">Usuari</param>
+        /// <param name="pass">Password</param>
+        /// <returns> Torna la resposta del servidor</returns>
+        public static string[] Login(string user, string pass)
         {
             WebService_flashcats enlinia = new WebService_flashcats();
-
-
-            String resposta = enlinia.responMissatge("Hola Server :)");
-            
-            Console.WriteLine(resposta);
-            vista.SetlabelInfo(resposta);
-            return (resposta);
-        }
-
-        // fa login
-        public static string[] login(string user, string pass)
-        {
-            WebService_flashcats enlinia = new WebService_flashcats();
-
 
             String[] resposta = enlinia.login(user, pass);
 
-            
             return (resposta);
         }
 
-        // fa logout
-        public static void logout(string codi)
+        /// <summary>
+        /// Fa logout al servidor
+        /// </summary>
+        /// <param name="codi">codi de sessió</param>
+        public static void Logout(string codi)
         {
             WebService_flashcats enlinia = new WebService_flashcats();
 
-
             enlinia.logout(codi);
-
-
-            
         }
-
+        /* No cal aquest setter
         //***** getters && setters *******
-        public void setcodi (string codi)
+        public void Setcodi (string codi)
         {
             this.codi = codi;
         }
-        
+     */
     }
 
 }

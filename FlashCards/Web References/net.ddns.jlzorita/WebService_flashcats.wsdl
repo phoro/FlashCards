@@ -4,18 +4,39 @@
     <xsd:schema>
       <xsd:import schemaLocation="http://jlzorita.ddns.net:8080/WebService_flashcats/WebService_flashcats?xsd=1" namespace="http://webservice_package/" />
     </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://jlzorita.ddns.net:8080/WebService_flashcats/WebService_flashcats?xsd=2" namespace="http://jaxb.dev.java.net/array" />
+    </xsd:schema>
   </types>
+  <message name="altaTema">
+    <part name="parameters" element="tns:altaTema" />
+  </message>
+  <message name="altaTemaResponse">
+    <part name="parameters" element="tns:altaTemaResponse" />
+  </message>
+  <message name="numeroFiles">
+    <part name="parameters" element="tns:numeroFiles" />
+  </message>
+  <message name="numeroFilesResponse">
+    <part name="parameters" element="tns:numeroFilesResponse" />
+  </message>
+  <message name="llistarTemes">
+    <part name="parameters" element="tns:llistarTemes" />
+  </message>
+  <message name="llistarTemesResponse">
+    <part name="parameters" element="tns:llistarTemesResponse" />
+  </message>
+  <message name="baixaFitxer">
+    <part name="parameters" element="tns:baixaFitxer" />
+  </message>
+  <message name="baixaFitxerResponse">
+    <part name="parameters" element="tns:baixaFitxerResponse" />
+  </message>
   <message name="logout">
     <part name="parameters" element="tns:logout" />
   </message>
   <message name="logoutResponse">
     <part name="parameters" element="tns:logoutResponse" />
-  </message>
-  <message name="responMissatge">
-    <part name="parameters" element="tns:responMissatge" />
-  </message>
-  <message name="responMissatgeResponse">
-    <part name="parameters" element="tns:responMissatgeResponse" />
   </message>
   <message name="login">
     <part name="parameters" element="tns:login" />
@@ -23,22 +44,80 @@
   <message name="loginResponse">
     <part name="parameters" element="tns:loginResponse" />
   </message>
+  <message name="pujaFitxer">
+    <part name="parameters" element="tns:pujaFitxer" />
+  </message>
+  <message name="pujaFitxerResponse">
+    <part name="parameters" element="tns:pujaFitxerResponse" />
+  </message>
   <portType name="WebService_flashcats">
+    <operation name="altaTema">
+      <input wsam:Action="http://webservice_package/WebService_flashcats/altaTemaRequest" message="tns:altaTema" />
+      <output wsam:Action="http://webservice_package/WebService_flashcats/altaTemaResponse" message="tns:altaTemaResponse" />
+    </operation>
+    <operation name="numeroFiles">
+      <input wsam:Action="http://webservice_package/WebService_flashcats/numeroFilesRequest" message="tns:numeroFiles" />
+      <output wsam:Action="http://webservice_package/WebService_flashcats/numeroFilesResponse" message="tns:numeroFilesResponse" />
+    </operation>
+    <operation name="llistarTemes">
+      <input wsam:Action="http://webservice_package/WebService_flashcats/llistarTemesRequest" message="tns:llistarTemes" />
+      <output wsam:Action="http://webservice_package/WebService_flashcats/llistarTemesResponse" message="tns:llistarTemesResponse" />
+    </operation>
+    <operation name="baixaFitxer">
+      <input wsam:Action="http://webservice_package/WebService_flashcats/baixaFitxerRequest" message="tns:baixaFitxer" />
+      <output wsam:Action="http://webservice_package/WebService_flashcats/baixaFitxerResponse" message="tns:baixaFitxerResponse" />
+    </operation>
     <operation name="logout">
       <input wsam:Action="http://webservice_package/WebService_flashcats/logoutRequest" message="tns:logout" />
       <output wsam:Action="http://webservice_package/WebService_flashcats/logoutResponse" message="tns:logoutResponse" />
-    </operation>
-    <operation name="responMissatge">
-      <input wsam:Action="http://webservice_package/WebService_flashcats/responMissatgeRequest" message="tns:responMissatge" />
-      <output wsam:Action="http://webservice_package/WebService_flashcats/responMissatgeResponse" message="tns:responMissatgeResponse" />
     </operation>
     <operation name="login">
       <input wsam:Action="http://webservice_package/WebService_flashcats/loginRequest" message="tns:login" />
       <output wsam:Action="http://webservice_package/WebService_flashcats/loginResponse" message="tns:loginResponse" />
     </operation>
+    <operation name="pujaFitxer">
+      <input wsam:Action="http://webservice_package/WebService_flashcats/pujaFitxerRequest" message="tns:pujaFitxer" />
+      <output wsam:Action="http://webservice_package/WebService_flashcats/pujaFitxerResponse" message="tns:pujaFitxerResponse" />
+    </operation>
   </portType>
   <binding name="WebService_flashcatsPortBinding" type="tns:WebService_flashcats">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="altaTema">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="numeroFiles">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="llistarTemes">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="baixaFitxer">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
     <operation name="logout">
       <soap:operation soapAction="" />
       <input>
@@ -48,7 +127,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="responMissatge">
+    <operation name="login">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -57,7 +136,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="login">
+    <operation name="pujaFitxer">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

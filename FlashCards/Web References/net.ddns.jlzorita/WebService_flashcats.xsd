@@ -1,11 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://webservice_package/" targetNamespace="http://webservice_package/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:tns="http://webservice_package/" xmlns:ns1="http://jaxb.dev.java.net/array" targetNamespace="http://webservice_package/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://jlzorita.ddns.net:8080/WebService_flashcats/WebService_flashcats?xsd=2" namespace="http://jaxb.dev.java.net/array" />
+  <xs:element name="altaTema" type="tns:altaTema" />
+  <xs:element name="altaTemaResponse" type="tns:altaTemaResponse" />
+  <xs:element name="baixaFitxer" type="tns:baixaFitxer" />
+  <xs:element name="baixaFitxerResponse" type="tns:baixaFitxerResponse" />
+  <xs:element name="llistarTemes" type="tns:llistarTemes" />
+  <xs:element name="llistarTemesResponse" type="tns:llistarTemesResponse" />
   <xs:element name="login" type="tns:login" />
   <xs:element name="loginResponse" type="tns:loginResponse" />
   <xs:element name="logout" type="tns:logout" />
   <xs:element name="logoutResponse" type="tns:logoutResponse" />
-  <xs:element name="responMissatge" type="tns:responMissatge" />
-  <xs:element name="responMissatgeResponse" type="tns:responMissatgeResponse" />
+  <xs:element name="numeroFiles" type="tns:numeroFiles" />
+  <xs:element name="numeroFilesResponse" type="tns:numeroFilesResponse" />
+  <xs:element name="pujaFitxer" type="tns:pujaFitxer" />
+  <xs:element name="pujaFitxerResponse" type="tns:pujaFitxerResponse" />
+  <xs:complexType name="numeroFiles">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codi_sessio" type="xs:string" />
+      <xs:element minOccurs="0" name="taula" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="numeroFilesResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="logout">
     <xs:sequence>
       <xs:element minOccurs="0" name="codi" type="xs:string" />
@@ -15,6 +35,15 @@
     <xs:sequence>
       <xs:element name="return" type="xs:boolean" />
     </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="pujaFitxer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="fitxer" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="extensio" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="pujaFitxerResponse">
+    <xs:sequence />
   </xs:complexType>
   <xs:complexType name="login">
     <xs:sequence>
@@ -27,14 +56,36 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="responMissatge">
+  <xs:complexType name="altaTema">
     <xs:sequence>
-      <xs:element minOccurs="0" name="this" type="xs:string" />
+      <xs:element minOccurs="0" name="codi_sessio" type="xs:string" />
+      <xs:element minOccurs="0" name="nom_tema" type="xs:string" />
+      <xs:element minOccurs="0" name="descripcio" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="responMissatgeResponse">
+  <xs:complexType name="altaTemaResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="xs:string" />
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="llistarTemes">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codi_sessio" type="xs:string" />
+      <xs:element name="num_pagina" type="xs:int" />
+      <xs:element name="num_files" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="llistarTemesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="ns1:stringArray" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="baixaFitxer">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="baixaFitxerResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" nillable="true" type="xs:base64Binary" />
     </xs:sequence>
   </xs:complexType>
 </xs:schema>
